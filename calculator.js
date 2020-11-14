@@ -23,27 +23,26 @@ function getNumberInputWithPrompt(prompt) {
 
 function getOperatorInputWithPrompt(prompt) {
     let response;
+    let validOperators = ['*','+','-','/'];
+    let chosenOperator;
     do {
         response = getStringInputWithPrompt(prompt);
-        if (response !== '*' && response !== '+' && response !== '-' && response!== '/') {
+        chosenOperator = validOperators.find(element => element == response);
+        if (chosenOperator == undefined){
             console.log('That is not a valid operator, please try again.');
         }
-    } while (response !== '*' && response !== '+' && response !== '-' && response!== '/')
+    } while (chosenOperator == undefined);
     return response;
 }
 
-function getCalcLength(){
-    const calcLength = +getNumberInputWithPrompt('How many numbers do you want to perform an operation on?');
-    return calcLength;
-}
-
-function getArray(calcLength){
+function getArray(){
+    const calcLength = getNumberInputWithPrompt('How many numbers do you want to perform an operation on?');
     let numbersArray = [];
     let operatorsArray = [];
     let step;
     let i;
     for (step = 0, i = 0; step < calcLength; step++, i++) {
-        numbersArray[step]= +getNumberInputWithPrompt('Please enter number ' + (step+1) +':');
+        numbersArray[step]= getNumberInputWithPrompt('Please enter number ' + (step+1) +':');
         if (i < (calcLength-1)) {
             operatorsArray[i]= getOperatorInputWithPrompt('Please enter operator ' + (i+1) +':');
         }
@@ -77,8 +76,7 @@ function calculateAnswer(array){
 }
 
 function performOneCalculation(){
-    const calcLength = getCalcLength();
-    const array = getArray(calcLength);
+    const array = getArray();
     const answer = calculateAnswer(array);
     console.log('\nThe answer is ' + answer + '.');
 }
