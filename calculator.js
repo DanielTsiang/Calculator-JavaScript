@@ -91,17 +91,6 @@ function calculateAnswer(array) {
     return answer;
 }
 
-function countVowels(string) {
-    let counts = {A: 0, E: 0, I: 0, O: 0, U: 0};
-    for (let char of string) { //iterates over each character in string
-        const upperChar = char.toUpperCase();
-        if (counts.hasOwnProperty(upperChar)) {
-            counts[upperChar] += 1;
-        }
-    }
-    return counts;
-}
-
 function performOneArithmeticCalculation() {
     const array = getArray();
     const answer = calculateAnswer(array);
@@ -110,10 +99,13 @@ function performOneArithmeticCalculation() {
 
 function performOneVowelCountingCalculation() {
     const string = getStringInputWithPrompt('Please enter a string:');
-    const answer = countVowels(string);
+    let vowelsArray = ['A', 'E', 'I', 'O', 'U'];
     console.log('The vowel counts are:');
-    for (let vowel in answer) {//iterates over each property name in answer
-        console.log(`  ${vowel}: ${answer[vowel]}`);
+    for (let vowel of vowelsArray) { // iterates over each element in vowelsArray
+        let vowelRegExp = new RegExp(vowel, 'gi'); // constructs a new Regular Expression for each iteration
+        let matchesArray = string.match(vowelRegExp); // constructs an array containing the matches
+        const count = matchesArray ? matchesArray.length : 0; // check if matchesArray is not null, in which case length of matchesArray is returned, else 0 is returned
+        console.log(`  ${vowel}: ${count}`);
     }
 }
 
