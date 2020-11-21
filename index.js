@@ -15,11 +15,11 @@ function getCalculationMode(arithmeticMode, vowelCountingMode) {
         response = userInput.getNumberInputWithPrompt(`Which calculator mode do you want?
         ${arithmeticMode}) Arithmetic
         ${vowelCountingMode}) Vowel counting`);
-        chosenCalculationMode = validCalculationModes.find(element => element == response);
-        if (chosenCalculationMode == undefined){
-            console.log('That is not a valid calculation mode, please try again.');
+        chosenCalculationMode = validCalculationModes.includes(response);
+        if (chosenCalculationMode == false){
+            console.log(`"${response}" is not a valid calculation mode, please try again.`);
         }
-    } while (chosenCalculationMode == undefined);
+    } while (chosenCalculationMode == false);
     return response;
 }
 

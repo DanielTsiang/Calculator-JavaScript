@@ -33,8 +33,14 @@ function calculateAnswer(array) {
             case '/':
                 answer /= array.numbers[step];
                 break;
+            case '%':
+                answer %= array.numbers[step];
+                break;
+            case '**':
+                answer **= array.numbers[step];
+                break;
             default:
-                console.log(`\nSorry, "${array.operators[i]}" is not a valid operator.`);
+                throw new Error(`Sorry, "${array.operators[i]}" is not a valid operator.`)
         }
     }
     return answer;
@@ -42,6 +48,10 @@ function calculateAnswer(array) {
 
 exports.performOneArithmeticCalculation = function() {
     const array = getArray();
-    const answer = calculateAnswer(array);
-    console.log(`\nThe answer is ${answer}.`);
+   try {
+        const answer = calculateAnswer(array);
+        console.log(`\nThe answer is ${answer}.`);
+    } catch (e) {
+        console.log(`\n${e.name}: ${e.message}`);
+    }
 }

@@ -10,24 +10,24 @@ exports.getStringInputWithPrompt = getStringInputWithPrompt;
 exports.getNumberInputWithPrompt = function(prompt) {
     let response;
     do {
-        response = +getStringInputWithPrompt(prompt);
+        response = getStringInputWithPrompt(prompt);
         if (isNaN(response)) {
-            console.log('That is not a valid number, please try again.');
+            console.log(`"${response}" is not a valid number, please try again.`);
         }
     } while (isNaN(response))
-    return response;
+    return +response;
 }
 
 exports.getOperatorInputWithPrompt = function(prompt) {
     let response;
-    let validOperators = ['*','+','-','/'];
+    let validOperators = ['*','+','-','/','%','**'];
     let chosenOperator;
     do {
         response = getStringInputWithPrompt(prompt);
-        chosenOperator = validOperators.find(element => element == response);
-        if (chosenOperator == undefined){
-            console.log('That is not a valid operator, please try again.');
+        chosenOperator = validOperators.includes(response);
+        if (chosenOperator == false){
+            console.log(`"${response}" is not a valid operator, please try again.`);
         }
-    } while (chosenOperator == undefined);
+    } while (chosenOperator == false);
     return response;
 }
