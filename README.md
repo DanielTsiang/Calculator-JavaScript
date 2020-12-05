@@ -1,2 +1,2 @@
-# JavaScript
-My JavaScript projects
+# Console Calculator
+A calculator that runs in the console using JavaScript
