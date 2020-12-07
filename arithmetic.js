@@ -12,35 +12,36 @@ function getArray() {
             operatorsArray[i]= userInput.getOperatorInputWithPrompt(`Please enter operator ${i+1}:`);
         }
     }
-    return {numbers: numbersArray, operators: operatorsArray};
+    return [numbersArray, operatorsArray];
 }
 
 function calculateAnswer(array) {
-    let answer = array.numbers[0];
+    const [numbers, operators] = array;
+    let answer = numbers[0];
     let step;
     let i;
-    for (step = 1, i = 0; step < array.numbers.length; step++, i++) {
-        switch (array.operators[i]) {
+    for (step = 1, i = 0; step < numbers.length; step++, i++) {
+        switch (operators[i]) {
             case '*':
-                answer *= array.numbers[step];
+                answer *= numbers[step];
                 break;
             case '+':
-                answer += array.numbers[step];
+                answer += numbers[step];
                 break;
             case '-':
-                answer -= array.numbers[step];
+                answer -= numbers[step];
                 break;
             case '/':
-                answer /= array.numbers[step];
+                answer /= numbers[step];
                 break;
             case '%':
-                answer %= array.numbers[step];
+                answer %= numbers[step];
                 break;
             case '**':
-                answer **= array.numbers[step];
+                answer **= numbers[step];
                 break;
             default:
-                throw new Error(`Sorry, "${array.operators[i]}" is not a valid operator.`)
+                throw new Error(`Sorry, "${operators[i]}" is not a valid operator.`)
         }
     }
     return answer;
