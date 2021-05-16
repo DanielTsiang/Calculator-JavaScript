@@ -17,10 +17,11 @@ A calculator that runs in the console using JavaScript with Node.js. The calcula
 * Input data type is validated. If the user enters invalid input, the user is prompted again until a valid input is entered.
 
 ### Getting Started
-1. In the terminal, run "node index.js"
-2. Enter 1 or 2 to select the desired mode.
-3. Follow the instructions provided to perform calculations.
-4. The final result will be printed in the terminal!
+1. Visit a demo [here](https://replit.com/@DanielTsiang/console-calculator).
+2. Click the green button button to run the code.
+3. Enter 1 or 2 to select the desired mode.
+4. Follow the instructions provided to perform calculations.
+5. The final result will be printed in the terminal!
 
 ### Contribution Guidelines
 If you would like to contribute code, identify bugs, or propose improvements, please fork this repository and submit a pull request with your suggestions. Below are some helpful links to help you get started:
