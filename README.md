@@ -18,7 +18,7 @@ A calculator that runs in the console using JavaScript with Node.js. The calcula
 
 ### Getting Started
 1. Visit a demo [here](https://replit.com/@DanielTsiang/console-calculator).
-2. Click the green button button to run the code.
+2. Click the green button to run the code.
 3. Enter 1 or 2 to select the desired mode.
 4. Follow the instructions provided to perform calculations.
 5. The final result will be printed in the terminal!
